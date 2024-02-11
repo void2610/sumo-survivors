@@ -19,7 +19,7 @@ public class ExpManager : MonoBehaviour
 
     private int exp = 0;
     private int level = 1;
-    private int[] levelUpExp = new int[] { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 };
+    private int[] levelUpExp = new int[] { 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 };
     public void AddExp(int addExp)
     {
         exp += addExp;
@@ -29,9 +29,16 @@ public class ExpManager : MonoBehaviour
         }
         if (exp >= levelUpExp[level - 1])
         {
-            exp -= levelUpExp[level - 1];
-            level++;
+            LevelUp();
         }
+    }
+
+    private void LevelUp()
+    {
+        exp -= levelUpExp[level - 1];
+        level++;
+
+        Time.timeScale = 0;
     }
 
     public void ResetExp()

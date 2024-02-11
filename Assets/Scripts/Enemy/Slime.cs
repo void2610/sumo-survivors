@@ -15,8 +15,8 @@ public class Slime : Enemy
         base.Start();
     }
 
-    new void Update()
+    new void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
     }
 }

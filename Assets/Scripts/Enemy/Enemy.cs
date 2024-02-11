@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         MoveToPlayer();
     }
