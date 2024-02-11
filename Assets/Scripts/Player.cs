@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
-        //TODO: マウス方向に移動もできるようにする
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         return Vector3.Lerp(rb.velocity / SPEED, moveDirection, 0.2f);
     }
@@ -34,7 +33,9 @@ public class Player : MonoBehaviour
     {
         rb.velocity = GetMoveDirection() * SPEED;
         if (rb.velocity.magnitude > 0.1f)
+        {
             rb.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0f, GetForwardDirection(), 0f), Time.deltaTime * 10f);
+        }
 
         rb.AddForce(Vector3.down * 50, ForceMode.Acceleration);
     }

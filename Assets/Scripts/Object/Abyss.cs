@@ -22,12 +22,14 @@ public class Abyss : MonoBehaviour
         if (other.gameObject.GetComponent<Enemy>() != null)
         {
             ScoreManager.instance.AddScore(other.gameObject.GetComponent<Enemy>().GetKillScore());
+            ExpManager.instance.AddExp(other.gameObject.GetComponent<Enemy>().GetKillScore());
             Destroy(other.gameObject);
         }
         else if (other.gameObject.GetComponent<Player>() != null)
         {
             other.gameObject.transform.position = new Vector3(0, 2, 0);
             ScoreManager.instance.ResetScore();
+            ExpManager.instance.ResetExp();
         }
     }
 }
