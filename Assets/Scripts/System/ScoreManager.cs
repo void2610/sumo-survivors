@@ -23,6 +23,11 @@ public class ScoreManager : MonoBehaviour
         score += addScore;
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+    }
+
     public int GetScore()
     {
         return score;

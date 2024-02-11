@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private const float SPEED = 7.0f;
+    private const float SPEED = 10.0f;
     private Rigidbody rb;
     private int forward = 0;
     private int right = 0;
-    public void CheckMoveInput()
+    private void CheckMoveInput()
     {
         forward = 0;
         right = 0;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
             right = 1;
     }
 
-    public Vector3 GetMoveDirection()
+    private Vector3 GetMoveDirection()
     {
         //TODO: マウス方向に移動もできるようにする
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -45,5 +45,7 @@ public class Player : MonoBehaviour
     {
         Vector3 moveDirection = GetMoveDirection();
         rb.velocity = moveDirection * SPEED;
+
+        rb.AddForce(Vector3.down * 50, ForceMode.Acceleration);
     }
 }

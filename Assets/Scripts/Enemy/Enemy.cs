@@ -28,6 +28,11 @@ public class Enemy : MonoBehaviour, IDamagable
         SPEED = speed;
     }
 
+    public int GetKillScore()
+    {
+        return Mathf.FloorToInt(MAX_HP);
+    }
+
     protected void MoveToPlayer()
     {
         Vector3 direction = player.transform.position - this.transform.position;
