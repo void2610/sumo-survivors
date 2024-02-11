@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    void Awake()
+    new void Awake()
     {
         base.Awake();
         SetStatus(1, 1, 1);
     }
 
-    void Start()
+    new void Start()
     {
         base.Start();
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
     }

@@ -6,27 +6,17 @@ public class Player : MonoBehaviour
 {
     private const float SPEED = 10.0f;
     private Rigidbody rb;
-    private int forward = 0;
-    private int right = 0;
-    private void CheckMoveInput()
-    {
-        forward = 0;
-        right = 0;
-        if (Input.GetKey(KeyCode.W))
-            forward = 1;
-        else if (Input.GetKey(KeyCode.S))
-            forward = -1;
-        if (Input.GetKey(KeyCode.A))
-            right = -1;
-        else if (Input.GetKey(KeyCode.D))
-            right = 1;
-    }
 
     private Vector3 GetMoveDirection()
     {
         //TODO: マウス方向に移動もできるようにする
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         return Vector3.Lerp(rb.velocity / SPEED, moveDirection, 0.2f);
+    }
+
+    private float GetForwardDirection()
+    {
+        return Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
     }
 
     void Start()
@@ -38,13 +28,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckMoveInput();
     }
 
     void FixedUpdate()
     {
-        Vector3 moveDirection = GetMoveDirection();
-        rb.velocity = moveDirection * SPEED;
+        rb.velocity = GetMoveDirection() * SPEED;
+        if (rb.velocity.magnitude > 0.1f)
+            rb.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0f, GetForwardDirection(), 0f), Time.deltaTime * 10f);
 
         rb.AddForce(Vector3.down * 50, ForceMode.Acceleration);
     }

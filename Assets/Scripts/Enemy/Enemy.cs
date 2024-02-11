@@ -2,35 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable
+public class Enemy : MonoBehaviour
 {
-    private float MAX_HP;
+    private float WEIGHT;
     private float ATTACK_POWER;
     private float SPEED;
-    private float hp;
 
     private GameObject player;
 
-
-    public void AddDamage(float damage)
+    protected void SetStatus(float weight, float attackPower, float speed)
     {
-        hp -= damage;
-        if (hp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-    protected void SetStatus(float maxHp, float attackPower, float speed)
-    {
-        MAX_HP = maxHp;
+        WEIGHT = weight;
         ATTACK_POWER = attackPower;
         SPEED = speed;
     }
 
     public int GetKillScore()
     {
-        return Mathf.FloorToInt(MAX_HP);
+        return Mathf.FloorToInt(WEIGHT * ATTACK_POWER * SPEED);
     }
 
     protected void MoveToPlayer()
@@ -41,7 +30,6 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected void Awake()
     {
-        hp = MAX_HP;
     }
 
     protected void Start()
