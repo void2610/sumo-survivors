@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using unityroom.Api;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
+        UnityroomApiClient.Instance.SendScore(1, score, ScoreboardWriteMode.Always);
         score = 0;
     }
 
