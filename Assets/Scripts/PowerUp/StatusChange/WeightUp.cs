@@ -8,7 +8,7 @@ public class WeightUp : StatusChange
     {
         name = "Weight Up";
         description = "プレイヤーの重さを上げる";
-        iconPath = "WeightUp.png";
+        iconPath = "WeightUp";
     }
 
 

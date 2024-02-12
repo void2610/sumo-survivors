@@ -25,9 +25,7 @@ public class PowerUpPanel : MonoBehaviour
         this.powerUp = powerUp;
         nameText.text = this.powerUp.name;
         descriptionText.text = powerUp.description;
-        Debug.Log(System.IO.File.Exists("Assets/Resources/Images/Icons/WeightUp.png"));
-        var icon = Resources.Load<Sprite>("waiwai");
-        Debug.Log(icon);
+        Sprite icon = Resources.Load<Sprite>("Images/Icons/" + powerUp.iconPath);
         iconImage.sprite = icon;
     }
 
