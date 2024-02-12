@@ -38,6 +38,7 @@ public class ExpManager : MonoBehaviour
         exp -= levelUpExp[level - 1];
         level++;
 
+        PowerUpManager.instance.RollPowerUp();
         Time.timeScale = 0;
     }
 

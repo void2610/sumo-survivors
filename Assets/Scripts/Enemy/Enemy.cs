@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float WEIGHT;
-    private float ATTACK_POWER;
-    private float SPEED;
+    protected float WEIGHT;
+    protected float ATTACK_POWER;
+    protected float SPEED;
 
-    private GameObject player;
+    protected GameObject player;
 
-    protected void SetStatus(float weight, float attackPower, float speed)
+    protected virtual void SetStatus()
     {
-        WEIGHT = weight;
-        ATTACK_POWER = attackPower;
-        SPEED = speed;
     }
 
     public int GetKillScore()
@@ -30,6 +27,7 @@ public class Enemy : MonoBehaviour
 
     protected void Awake()
     {
+        SetStatus();
     }
 
     protected void Start()

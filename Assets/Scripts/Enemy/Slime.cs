@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
+    protected override void SetStatus()
+    {
+        WEIGHT = 1.0f;
+        ATTACK_POWER = 1.0f;
+        SPEED = 1.0f;
+    }
+
     new void Awake()
     {
         base.Awake();
-        SetStatus(1, 1, 1);
     }
 
     new void Start()
