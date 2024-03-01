@@ -27,6 +27,9 @@ public class PowerUpPanel : MonoBehaviour
                 Summon summon = powerUp as Summon;
                 summon.SummonObject();
             }
+
+            UIManager.instance.ChangeActiveUI(UIManager.UIState.InGame);
+            Time.timeScale = 1;
         }
     }
 
@@ -52,8 +55,6 @@ public class PowerUpPanel : MonoBehaviour
         nameText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         descriptionText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         iconImage = transform.GetChild(3).GetComponent<Image>();
-
-
     }
 
     // Update is called once per frame

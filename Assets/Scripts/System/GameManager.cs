@@ -15,7 +15,16 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
+            if (isPaused)
+            {
+                isPaused = false;
+                UIManager.instance.ChangeActiveUI(UIManager.UIState.InGame);
+            }
+            else
+            {
+                isPaused = true;
+                UIManager.instance.ChangeActiveUI(UIManager.UIState.Pause);
+            }
         }
 
         if (isPaused)

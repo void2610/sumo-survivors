@@ -15,6 +15,7 @@ public class WeightUp : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        StatusManager.instance.PLAYER_WEIGHT += 0.5f;
+        float weight = StatusManager.instance.PLAYER_WEIGHT;
+        StatusManager.instance.ChangePlayerWeight(weight + 0.5f);
     }
 }

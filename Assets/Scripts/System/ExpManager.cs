@@ -37,9 +37,11 @@ public class ExpManager : MonoBehaviour
     {
         exp -= levelUpExp[level - 1];
         level++;
+        Debug.Log("Level Up! Current Level: " + level);
 
         PowerUpManager.instance.RollPowerUp();
         Time.timeScale = 0;
+        UIManager.instance.ChangeActiveUI(UIManager.UIState.LevelUp);
     }
 
     public void ResetExp()
