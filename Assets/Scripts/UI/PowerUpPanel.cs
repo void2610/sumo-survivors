@@ -28,7 +28,7 @@ public class PowerUpPanel : MonoBehaviour
                 summon.SummonObject();
             }
 
-            UIManager.instance.ChangeActiveUI(UIManager.UIState.InGame);
+            UIManager.instance.ChangeActiveUI(GameState.InGame);
             Time.timeScale = 1;
         }
     }

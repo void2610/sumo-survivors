@@ -41,7 +41,7 @@ public class ExpManager : MonoBehaviour
 
         PowerUpManager.instance.RollPowerUp();
         Time.timeScale = 0;
-        UIManager.instance.ChangeActiveUI(UIManager.UIState.LevelUp);
+        UIManager.instance.ChangeActiveUI(GameState.LevelUp);
     }
 
     public void ResetExp()

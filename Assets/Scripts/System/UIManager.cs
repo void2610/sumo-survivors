@@ -1,73 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public enum UIState
-    {
-        InGame,
-        Pause,
-        LevelUp,
-    }
-    public UIState currentState = UIState.InGame;
-
     public static UIManager instance;
 
-    private GameObject[] inGameUIs;
-    private GameObject[] pauseUIs;
-    private GameObject[] levelUpUIs;
+    [SerializeField]
+    private CanvasGroup inGameUIs;
+    [SerializeField]
+    private CanvasGroup pauseUIs;
+    [SerializeField]
+    private CanvasGroup levelUpUIs;
 
-    public void ChangeActiveUI(UIState state)
+    public void ChangeActiveUI(GameState state)
     {
         switch (state)
         {
-            case UIState.InGame:
-                currentState = UIState.InGame;
-                foreach (GameObject ui in inGameUIs)
-                {
-                    ui.SetActive(true);
-                }
-                foreach (GameObject ui in pauseUIs)
-                {
-                    ui.SetActive(false);
-                }
-                foreach (GameObject ui in levelUpUIs)
-                {
-                    ui.SetActive(false);
-                }
+            case GameState.InGame:
+                ChangeActiveUI(inGameUIs, true);
+                ChangeActiveUI(pauseUIs, false);
+                ChangeActiveUI(levelUpUIs, false);
                 break;
-            case UIState.Pause:
-                currentState = UIState.Pause;
-                foreach (GameObject ui in inGameUIs)
-                {
-                    ui.SetActive(false);
-                }
-                foreach (GameObject ui in pauseUIs)
-                {
-                    ui.SetActive(true);
-                }
-                foreach (GameObject ui in levelUpUIs)
-                {
-                    ui.SetActive(false);
-                }
+            case GameState.Pause:
+                ChangeActiveUI(inGameUIs, true);
+                ChangeActiveUI(pauseUIs, true);
                 break;
-            case UIState.LevelUp:
-                currentState = UIState.LevelUp;
-                foreach (GameObject ui in inGameUIs)
-                {
-                    ui.SetActive(false);
-                }
-                foreach (GameObject ui in pauseUIs)
-                {
-                    ui.SetActive(false);
-                }
-                foreach (GameObject ui in levelUpUIs)
-                {
-                    ui.SetActive(true);
-                }
+            case GameState.LevelUp:
+                ChangeActiveUI(inGameUIs, true);
+                ChangeActiveUI(pauseUIs, false);
+                ChangeActiveUI(levelUpUIs, true);
                 break;
         }
+    }
+
+    private void ChangeActiveUI(CanvasGroup canvasGroup, bool isActive)
+    {
+        canvasGroup.alpha = isActive ? 1 : 0;
+        canvasGroup.blocksRaycasts = isActive;
+        canvasGroup.interactable = isActive;
     }
 
     void Awake()
@@ -85,10 +57,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        inGameUIs = GameObject.FindGameObjectsWithTag("InGameUI");
-        pauseUIs = GameObject.FindGameObjectsWithTag("PauseUI");
-        levelUpUIs = GameObject.FindGameObjectsWithTag("LevelUpUI");
-
-        ChangeActiveUI(UIState.InGame);
+        ChangeActiveUI(GameState.InGame);
     }
 }

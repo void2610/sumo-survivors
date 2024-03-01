@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameState currentState = GameState.InGame;
     private bool isPaused = false;
     void Start()
     {
@@ -18,12 +19,12 @@ public class GameManager : MonoBehaviour
             if (isPaused)
             {
                 isPaused = false;
-                UIManager.instance.ChangeActiveUI(UIManager.UIState.InGame);
+                UIManager.instance.ChangeActiveUI(GameState.InGame);
             }
             else
             {
                 isPaused = true;
-                UIManager.instance.ChangeActiveUI(UIManager.UIState.Pause);
+                UIManager.instance.ChangeActiveUI(GameState.Pause);
             }
         }
 
