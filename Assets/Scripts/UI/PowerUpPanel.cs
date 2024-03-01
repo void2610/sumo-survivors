@@ -13,6 +13,23 @@ public class PowerUpPanel : MonoBehaviour
     private TextMeshProUGUI descriptionText;
     private Image iconImage;
 
+    public void OnClick()
+    {
+        if (powerUp)
+        {
+            if (powerUp is StatusChange)
+            {
+                StatusChange statusChange = powerUp as StatusChange;
+                statusChange.ChangeStatus();
+            }
+            else if (powerUp is Summon)
+            {
+                Summon summon = powerUp as Summon;
+                summon.SummonObject();
+            }
+        }
+    }
+
     public void SetPowerUp(Type powerUpType)
     {
 

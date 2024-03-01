@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StatusChange : PowerUp
 {
-    protected virtual void ChangeStatus()
+    public virtual void ChangeStatus()
     {
+        Debug.Log(this.name);
     }
 }

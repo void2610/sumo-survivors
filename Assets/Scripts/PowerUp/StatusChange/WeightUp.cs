@@ -12,8 +12,9 @@ public class WeightUp : StatusChange
     }
 
 
-    protected override void ChangeStatus()
+    public override void ChangeStatus()
     {
+        base.ChangeStatus();
         StatusManager.instance.PLAYER_WEIGHT += 0.5f;
     }
 }
