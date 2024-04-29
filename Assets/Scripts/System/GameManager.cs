@@ -5,36 +5,56 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameState currentState = GameState.InGame;
-    private bool isPaused = false;
-    void Start()
-    {
 
+    public void ChangeGameState(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.InGame:
+                Time.timeScale = 1;
+                UIManager.instance.ChangeActiveUI(GameState.InGame);
+                break;
+            case GameState.Pause:
+                Time.timeScale = 0;
+                UIManager.instance.ChangeActiveUI(GameState.Pause);
+                break;
+            case GameState.LevelUp:
+                Time.timeScale = 0;
+                UIManager.instance.ChangeActiveUI(GameState.LevelUp);
+                break;
+            default:
+                break;
+        }
+
+        currentState = state;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (currentState == GameState.InGame)
             {
-                isPaused = false;
-                UIManager.instance.ChangeActiveUI(GameState.InGame);
+                this.ChangeGameState(GameState.Pause);
             }
-            else
+            else if (currentState == GameState.Pause)
             {
-                isPaused = true;
-                UIManager.instance.ChangeActiveUI(GameState.Pause);
+                this.ChangeGameState(GameState.InGame);
             }
         }
+    }
 
-        if (isPaused)
+    public static GameManager instance;
+    void Awake()
+    {
+        if (instance == null)
         {
-            Time.timeScale = 0;
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Time.timeScale = 1;
+            Destroy(gameObject);
         }
     }
 }

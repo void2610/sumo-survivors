@@ -40,7 +40,7 @@ public class ExpManager : MonoBehaviour
         Debug.Log("Level Up! Current Level: " + level);
 
         PowerUpManager.instance.RollPowerUp();
-        Time.timeScale = 0;
+        GameManager.instance.ChangeGameState(GameState.LevelUp);
         UIManager.instance.ChangeActiveUI(GameState.LevelUp);
     }
 
