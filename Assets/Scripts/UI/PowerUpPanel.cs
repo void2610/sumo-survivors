@@ -35,9 +35,8 @@ public class PowerUpPanel : MonoBehaviour
 
     public void SetPowerUp(Type powerUpType)
     {
-
         PowerUp powerUp = this.gameObject.AddComponent(powerUpType) as PowerUp;
-        if (!powerUp || powerUp.name == null || powerUp.description == null || powerUp.iconPath == null)
+        if (!powerUp || iconImage == null)
         {
             return;
         }
