@@ -57,6 +57,7 @@ public class PowerUpManager : MonoBehaviour
     void Start()
     {
         statusChangeList.Add(typeof(WeightUp));
+        statusChangeList.Add(typeof(SpeedUp));
         RollPowerUp();
     }
 

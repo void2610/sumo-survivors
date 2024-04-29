@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private const float SPEED = 10.0f;
+    private float speed = 10.0f;
     private Rigidbody rb;
 
     private Vector3 GetMoveDirection()
     {
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        return Vector3.Lerp(rb.velocity / SPEED, moveDirection, 0.2f);
+        return Vector3.Lerp(rb.velocity / speed, moveDirection, 0.2f);
     }
 
     private float GetForwardDirection()
@@ -27,11 +27,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = StatusManager.instance.PLAYER_SPEED;
     }
 
     void FixedUpdate()
     {
-        rb.velocity = GetMoveDirection() * SPEED;
+        rb.velocity = GetMoveDirection() * speed;
         if (rb.velocity.magnitude > 0.1f)
         {
             rb.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0f, GetForwardDirection(), 0f), Time.deltaTime * 10f);
