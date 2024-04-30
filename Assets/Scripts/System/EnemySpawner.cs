@@ -24,13 +24,4 @@ public class EnemySpawner : MonoBehaviour
         spawnRange[0] = field.GetComponent<Transform>().position - floorSize / 2f;
         spawnRange[1] = field.GetComponent<Transform>().position + floorSize / 2f;
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (Time.frameCount % 60 == 0)
-        {
-            SpawnEnemy();
-        }
-    }
 }
