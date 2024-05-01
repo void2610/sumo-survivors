@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         speed = StatusManager.instance.PLAYER_SPEED;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(this.transform.forward * StatusManager.instance.DASH_POWER, ForceMode.Impulse);
+        }
     }
 
     void FixedUpdate()
