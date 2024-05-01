@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Abyss : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class Abyss : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Enemyクラスを継承しているオブジェクトが落ちたら消す
         if (other.gameObject.GetComponent<Enemy>() != null)
         {
             ScoreManager.instance.AddScore(other.gameObject.GetComponent<Enemy>().GetKillScore());
@@ -27,9 +27,12 @@ public class Abyss : MonoBehaviour
         }
         else if (other.gameObject.GetComponent<Player>() != null)
         {
-            other.gameObject.transform.position = new Vector3(0, 2, 0);
-            ScoreManager.instance.ResetScore();
-            ExpManager.instance.ResetExp();
+            ScoreManager.instance.SendScore();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // other.gameObject.transform.position = new Vector3(0, 2, 0);
+            // ScoreManager.instance.ResetScore();
+            // ExpManager.instance.ResetExp();
+            // StatusManager.instance.ResetStatus();
         }
     }
 }

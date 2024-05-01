@@ -26,8 +26,11 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
-        UnityroomApiClient.Instance.SendScore(1, score, ScoreboardWriteMode.Always);
         score = 0;
+    }
+
+    public void SendScore(){
+        UnityroomApiClient.Instance.SendScore(1, score, ScoreboardWriteMode.Always);
     }
 
     public int GetScore()

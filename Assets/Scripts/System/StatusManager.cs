@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class StatusManager : MonoBehaviour
 {
-    public float PLAYER_WEIGHT { get; private set; } = 1.0f;
-    public float PLAYER_SPEED { get; private set; } = 10.0f;
-    public float EXP_MULTIPLIER { get; private set; } = 1.0f;
-    public float ENEMY_SPAWN_RATE { get; private set; } = 1.0f;
+    public float PLAYER_WEIGHT { get; private set; }
+    public float PLAYER_SPEED { get; private set; }
+    public float EXP_MULTIPLIER { get; private set; }
+    public float ENEMY_SPAWN_RATE { get; private set; }
+
+    public void ResetStatus(){
+        PLAYER_WEIGHT = 1.0f;
+        PLAYER_SPEED = 10.0f;
+        EXP_MULTIPLIER = 1.0f;
+        ENEMY_SPAWN_RATE = 1.0f;
+    }
 
     public void ChangePlayerWeight(float value)
     {
@@ -28,7 +35,7 @@ public class StatusManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            ResetStatus();
         }
         else
         {
