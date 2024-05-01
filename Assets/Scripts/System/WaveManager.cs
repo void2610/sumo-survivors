@@ -13,15 +13,13 @@ public class WaveManager : MonoBehaviour
     }
 
     void Update(){
-        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 1.0f;
+        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 3.0f;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (Time.frameCount % 60 == 0)
         {
-            Debug.Log(Mathf.Floor(spawnNum));
             for (int i = 0; i < Mathf.Floor(spawnNum); i++)
             {
                 spawner.SpawnEnemy();

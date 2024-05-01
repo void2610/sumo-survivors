@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     private GameObject player;
+    [SerializeField]
+    private Vector3 offset;
     void Start()
     {
         player = GameObject.Find("Player");
@@ -12,6 +14,6 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = player.transform.position + new Vector3(0, 21, 0);
+        this.transform.position = player.transform.position + offset;
     }
 }
