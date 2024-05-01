@@ -12,8 +12,9 @@ public class WaveManager : MonoBehaviour
         spawner = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
     }
 
-    void Update(){
-        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 3.0f;
+    void Update()
+    {
+        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 2.0f;
     }
 
     void FixedUpdate()
@@ -24,7 +25,8 @@ public class WaveManager : MonoBehaviour
             {
                 spawner.SpawnEnemy();
             }
-            if (0.5f > spawnNum - Mathf.Floor(spawnNum)){
+            if (0.5f > spawnNum - Mathf.Floor(spawnNum))
+            {
                 spawner.SpawnEnemy();
             }
         }
