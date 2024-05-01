@@ -15,7 +15,7 @@ public class SizeUp : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        float size = StatusManager.instance.PLAYER_SIZE;
-        StatusManager.instance.ChangePlayerSize(size * 1.2f);
+        StatusManager.instance.PLAYER_SIZE *= 1.2f;
+        GameObject.Find("Player").transform.localScale = Vector3.one * StatusManager.instance.PLAYER_SIZE;
     }
 }

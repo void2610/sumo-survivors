@@ -15,7 +15,6 @@ public class SpeedUp : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        float speed = StatusManager.instance.PLAYER_SPEED;
-        StatusManager.instance.ChangePlayerSpeed(speed + 1f);
+        StatusManager.instance.PLAYER_SPEED += 1.0f;
     }
 }
