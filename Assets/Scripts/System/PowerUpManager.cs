@@ -59,6 +59,7 @@ public class PowerUpManager : MonoBehaviour
         statusChangeList.Add(typeof(SpeedUp));
         statusChangeList.Add(typeof(SizeUp));
         statusChangeList.Add(typeof(DashPower));
+        statusChangeList.Add(typeof(DashCycle));
         RollPowerUp();
     }
 

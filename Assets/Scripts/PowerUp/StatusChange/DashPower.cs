@@ -15,6 +15,6 @@ public class DashPower : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        StatusManager.instance.DASH_POWER += 3.0f;
+        StatusManager.instance.DASH_POWER *= 1.4f;
     }
 }

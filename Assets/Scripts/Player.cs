@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private float speed = 10.0f;
     private Rigidbody rb;
+    private bool canDash = true;
 
     private Vector3 GetMoveDirection()
     {
@@ -16,6 +17,13 @@ public class Player : MonoBehaviour
     private float GetForwardDirection()
     {
         return Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+    }
+
+    IEnumerator DashColldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(StatusManager.instance.DASH_COOLTIME);
+        canDash = true;
     }
 
     void Start()
@@ -29,9 +37,10 @@ public class Player : MonoBehaviour
     {
         speed = StatusManager.instance.PLAYER_SPEED;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
-            rb.AddForce(this.transform.forward * StatusManager.instance.DASH_POWER, ForceMode.Impulse);
+            rb.AddForce(this.transform.forward * 12 * StatusManager.instance.DASH_POWER, ForceMode.Impulse);
+            StartCoroutine("DashColldown");
         }
     }
 
