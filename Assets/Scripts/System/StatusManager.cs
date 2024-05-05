@@ -11,6 +11,7 @@ public class StatusManager : MonoBehaviour
     public float DASH_COOLTIME;
     public float EXP_MULTIPLIER;
     public float ENEMY_SPAWN_RATE;
+    public float STAGE_SIZE;
 
     public void ResetStatus()
     {
@@ -21,6 +22,7 @@ public class StatusManager : MonoBehaviour
         DASH_COOLTIME = 2.0f;
         EXP_MULTIPLIER = 1.0f;
         ENEMY_SPAWN_RATE = 1.0f;
+        STAGE_SIZE = 1.0f;
     }
 
     public static StatusManager instance;
