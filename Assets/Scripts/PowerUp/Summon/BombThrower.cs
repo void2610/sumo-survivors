@@ -18,7 +18,6 @@ public class BombThrower : Summon
     public override void SummonObject()
     {
         base.SummonObject();
-        Debug.Log(bomb.name + "を召喚しました");
         Vector3 p = GameObject.Find("Player").transform.position;
         Instantiate(bomb, p + Vector3.up * 2, Quaternion.identity);
     }
