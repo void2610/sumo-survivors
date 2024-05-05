@@ -7,9 +7,6 @@ public class Player : MonoBehaviour
     private float speed = 10.0f;
     private Rigidbody rb;
     private bool canDash = true;
-
-    [SerializeField]
-    private GameObject bombPrefab;
     private Vector3 GetMoveDirection()
     {
         Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -43,11 +40,6 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(this.transform.forward * 12 * StatusManager.instance.DASH_POWER, ForceMode.Impulse);
             StartCoroutine("DashColldown");
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            GameObject bomb = Instantiate(bombPrefab, this.transform.position + Vector3.up * 2, Quaternion.identity);
         }
     }
 

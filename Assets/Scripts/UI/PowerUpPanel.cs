@@ -12,6 +12,7 @@ public class PowerUpPanel : MonoBehaviour
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descriptionText;
     private Image iconImage;
+    private GameObject player;
 
     public void OnClick()
     {
@@ -24,8 +25,8 @@ public class PowerUpPanel : MonoBehaviour
             }
             else if (powerUp is Summon)
             {
-                Summon summon = powerUp as Summon;
-                summon.SummonObject();
+                Summon pu = player.AddComponent(powerUp.GetType()) as Summon;
+                pu.StartSummon();
             }
 
             UIManager.instance.ChangeActiveUI(GameState.InGame);
@@ -54,6 +55,7 @@ public class PowerUpPanel : MonoBehaviour
         nameText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         descriptionText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         iconImage = transform.GetChild(3).GetComponent<Image>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
