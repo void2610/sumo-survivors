@@ -55,14 +55,14 @@ public class PowerUpManager : MonoBehaviour
     }
     void Start()
     {
-        statusChangeList.Add(typeof(WeightUp));
-        statusChangeList.Add(typeof(SpeedUp));
-        statusChangeList.Add(typeof(SizeUp));
-        statusChangeList.Add(typeof(DashPower));
-        statusChangeList.Add(typeof(DashCycle));
-        statusChangeList.Add(typeof(StageSizeUp));
+        // statusChangeList.Add(typeof(WeightUp));
+        // statusChangeList.Add(typeof(SpeedUp));
+        // statusChangeList.Add(typeof(SizeUp));
+        // statusChangeList.Add(typeof(DashPower));
+        // statusChangeList.Add(typeof(DashCycle));
+        // statusChangeList.Add(typeof(StageSizeUp));
 
-        statusChangeList.Add(typeof(BombThrower));
+        // statusChangeList.Add(typeof(BombThrower));
         statusChangeList.Add(typeof(AntiGeavityField));
         RollPowerUp();
     }

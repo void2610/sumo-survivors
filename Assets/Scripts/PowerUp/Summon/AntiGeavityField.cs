@@ -18,6 +18,7 @@ public class AntiGeavityField : Summon
     public override void SummonObject()
     {
         base.SummonObject();
-        Instantiate(agf);
+
+        Instantiate(agf, GameObject.Find("Player").transform.position, Quaternion.identity);
     }
 }

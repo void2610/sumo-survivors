@@ -9,9 +9,6 @@ public class AntigravityFieldObj : MonoBehaviour
 
     void Start()
     {
-        GameObject p = GameObject.Find("Player");
-        this.transform.parent = p.transform;
-        this.transform.localPosition = Vector3.zero;
         Destroy(this.gameObject, time);
     }
 
