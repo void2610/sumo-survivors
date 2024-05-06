@@ -23,16 +23,17 @@ public class Abyss : MonoBehaviour
         {
             ScoreManager.instance.AddScore(other.gameObject.GetComponent<Enemy>().GetKillScore());
             ExpManager.instance.AddExp(other.gameObject.GetComponent<Enemy>().GetKillScore());
+
+            ParticleSystem deathParticle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/DeathParticle").GetComponent<ParticleSystem>(), other.gameObject.transform.position, Quaternion.identity);
+            deathParticle.Play();
+
             Destroy(other.gameObject);
+            Destroy(deathParticle, 3);
         }
         else if (other.gameObject.GetComponent<Player>() != null)
         {
             ScoreManager.instance.SendScore();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            // other.gameObject.transform.position = new Vector3(0, 2, 0);
-            // ScoreManager.instance.ResetScore();
-            // ExpManager.instance.ResetExp();
-            // StatusManager.instance.ResetStatus();
         }
     }
 }
