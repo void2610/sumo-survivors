@@ -22,24 +22,15 @@ public class Bomb : MonoBehaviour
             }
         }
 
+        ParticleSystem particle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/ExplosionParticle").GetComponent<ParticleSystem>(), this.transform.position, Quaternion.identity);
+        particle.Play();
+        Destroy(particle, 3);
+
         Destroy(this.gameObject);
     }
 
     void Start()
     {
         Invoke("Explode", time);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnDestroy()
-    {
-        ParticleSystem particle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/ExplosionParticle").GetComponent<ParticleSystem>(), this.transform.position, Quaternion.identity);
-        particle.Play();
-        Destroy(particle, 3);
     }
 }
