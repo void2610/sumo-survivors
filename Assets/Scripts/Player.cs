@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
         dashParticle.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         speed = StatusManager.instance.PLAYER_SPEED;

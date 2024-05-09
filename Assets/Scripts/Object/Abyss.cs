@@ -27,7 +27,9 @@ public class Abyss : MonoBehaviour
             ParticleSystem deathParticle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/DeathParticle").GetComponent<ParticleSystem>(), other.gameObject.transform.position, Quaternion.identity);
             deathParticle.Play();
 
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<PlayRandomAudio>().Play();
+
+            Destroy(other.gameObject, 0.2f);
             Destroy(deathParticle, 3);
         }
         else if (other.gameObject.GetComponent<Player>() != null)
