@@ -19,15 +19,11 @@ public class ExpManager : MonoBehaviour
 
     private int exp = 0;
     private int level = 1;
-    private int[] levelUpExp = new int[] { 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 };
+    private int levelUpExp = 1;
     public void AddExp(int addExp)
     {
         exp += addExp;
-        if (level >= levelUpExp.Length)
-        {
-            return;
-        }
-        if (exp >= levelUpExp[level - 1])
+        if (exp >= levelUpExp)
         {
             LevelUp();
         }
@@ -35,7 +31,7 @@ public class ExpManager : MonoBehaviour
 
     private void LevelUp()
     {
-        exp -= levelUpExp[level - 1];
+        exp = 0;
         level++;
         Debug.Log("Level Up! Current Level: " + level);
 
@@ -57,14 +53,7 @@ public class ExpManager : MonoBehaviour
 
     public string GetUIString()
     {
-        if (level >= levelUpExp.Length)
-        {
-            return "EXP: " + exp + " / MAX";
-        }
-        else
-        {
-            return "EXP: " + exp + "/" + levelUpExp[level - 1];
-        }
+        return "EXP: " + exp + "/" + levelUpExp;
     }
 
     void Start()
@@ -76,5 +65,6 @@ public class ExpManager : MonoBehaviour
     void Update()
     {
 
+        levelUpExp = (int)Mathf.Pow(level, 2);
     }
 }

@@ -15,6 +15,6 @@ public class DashCycle : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        StatusManager.instance.DASH_COOLTIME *= 0.8f;
+        StatusManager.instance.DASH_COOLTIME *= 0.5f;
     }
 }
