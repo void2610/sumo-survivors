@@ -13,6 +13,8 @@ public class StatusManager : MonoBehaviour
     public float ENEMY_SPAWN_RATE;
     public float STAGE_SIZE;
 
+    public float ANTIGRAVITY_POWER;
+
     public void ResetStatus()
     {
         PLAYER_WEIGHT = 1.0f;
@@ -23,6 +25,7 @@ public class StatusManager : MonoBehaviour
         EXP_MULTIPLIER = 1.0f;
         ENEMY_SPAWN_RATE = 1.0f;
         STAGE_SIZE = 1.0f;
+        ANTIGRAVITY_POWER = 15.0f;
     }
 
     public static StatusManager instance;

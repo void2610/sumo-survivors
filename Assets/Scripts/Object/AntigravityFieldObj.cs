@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AntigravityFieldObj : MonoBehaviour
 {
-    float power = 15.0f;
     float time = 5.0f;
 
     void Start()
@@ -18,7 +17,7 @@ public class AntigravityFieldObj : MonoBehaviour
 
         if (rb != null)
         {
-            rb.AddForce(Vector3.up * power, ForceMode.Acceleration);
+            rb.AddForce(Vector3.up * StatusManager.instance.ANTIGRAVITY_POWER, ForceMode.Acceleration);
         }
     }
 }

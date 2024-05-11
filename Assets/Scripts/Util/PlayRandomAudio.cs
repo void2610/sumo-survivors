@@ -16,7 +16,6 @@ public class PlayRandomAudio : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("Play");
         audioSource.clip = audioList[Random.Range(0, audioList.Count)];
         audioSource.Play();
     }

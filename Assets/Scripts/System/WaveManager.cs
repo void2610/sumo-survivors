@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 1.0f;
+        spawnNum = 0.5f * ExpManager.instance.GetLevel() + 1.0f * StatusManager.instance.ENEMY_SPAWN_RATE;
     }
 
     void FixedUpdate()
