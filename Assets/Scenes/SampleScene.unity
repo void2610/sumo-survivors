@@ -1003,7 +1003,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1919,6 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8ec949c3a0644f2927ee983ebda41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashSound: {fileID: 8300000, guid: d2c8a3ba5e9f34693bd502784ea565ef, type: 3}
 --- !u!54 &952363694
 Rigidbody:
   m_ObjectHideFlags: 0
