@@ -21,6 +21,10 @@ public class Enemy : MonoBehaviour
 
     protected void MoveToPlayer()
     {
+        if (player == null)
+        {
+            return;
+        }
         Vector3 direction = player.transform.position - this.transform.position;
         this.transform.position += direction.normalized * SPEED * Time.deltaTime;
     }

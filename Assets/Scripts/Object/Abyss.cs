@@ -21,8 +21,11 @@ public class Abyss : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Enemy>() != null)
         {
-            ScoreManager.instance.AddScore(other.gameObject.GetComponent<Enemy>().GetKillScore());
-            ExpManager.instance.AddExp(other.gameObject.GetComponent<Enemy>().GetKillScore());
+            if (ScoreManager.instance != null)
+            {
+                ScoreManager.instance.AddScore(other.gameObject.GetComponent<Enemy>().GetKillScore());
+                ExpManager.instance.AddExp(other.gameObject.GetComponent<Enemy>().GetKillScore());
+            }
 
             ParticleSystem deathParticle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/DeathParticle").GetComponent<ParticleSystem>(), other.gameObject.transform.position, Quaternion.identity);
             deathParticle.Play();
