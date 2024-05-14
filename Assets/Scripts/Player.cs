@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip dashSound;
     private float speed = 10.0f;
     private Rigidbody rb;
     private bool canDash = true;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
             rb.AddForce(this.transform.forward * 12 * StatusManager.instance.DASH_POWER, ForceMode.Impulse);
             StartCoroutine("DashColldown");
             dashParticle.Play();
+            SoundManager.instance.PlaySe(dashSound, 0.8f);
         }
     }
 
