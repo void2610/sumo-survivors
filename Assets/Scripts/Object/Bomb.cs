@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip explosionSound;
     private float power = 180f;
     private float radius = 5.0f;
     private float time = 1.5f;
@@ -25,6 +27,7 @@ public class Bomb : MonoBehaviour
         ParticleSystem particle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/ExplosionParticle").GetComponent<ParticleSystem>(), this.transform.position, Quaternion.identity);
         particle.Play();
         Destroy(particle, 3);
+        SoundManager.instance.PlaySe(explosionSound, 0.6f);
 
         Destroy(this.gameObject);
     }

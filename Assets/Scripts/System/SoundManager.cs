@@ -48,7 +48,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayBgm(AudioClip clip)
+    public void PlayBgm(AudioClip clip, float volume = 1.0f)
     {
         bgmAudioSource.clip = clip;
 
@@ -57,22 +57,24 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        bgmAudioSource.volume = volume;
         bgmAudioSource.Play();
     }
 
-    public void PlaySe(AudioClip clip)
+    public void PlaySe(AudioClip clip, float volume = 1.0f)
     {
         if (clip == null)
         {
             return;
         }
 
+        seAudioSource.volume = volume;
         seAudioSource.PlayOneShot(clip);
     }
 
     private void Start()
     {
-        PlayBgm(bgmAudioClip);
+        PlayBgm(bgmAudioClip, 0.1f);
     }
 
 }

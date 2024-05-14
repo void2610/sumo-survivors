@@ -29,8 +29,7 @@ public class PowerUpPanel : MonoBehaviour
                 pu.StartSummon();
             }
 
-            UIManager.instance.ChangeActiveUI(GameState.InGame);
-            Time.timeScale = 1;
+            GameManager.instance.ChangeGameState(GameState.InGame);
         }
     }
 
