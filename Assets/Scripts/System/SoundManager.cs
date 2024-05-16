@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -32,7 +33,7 @@ public class SoundManager : MonoBehaviour
         }
         set
         {
-            bgmAudioSource.volume = Mathf.Clamp01(value);
+            bgmAudioSource.volume = Mathf.Clamp01(value * 0.1f);
         }
     }
 

@@ -10,4 +10,14 @@ public class TitleUI : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void OnSliderChanged(float value)
+    {
+        AudioListener.volume = value;
+    }
+
+    private void Start()
+    {
+        AudioListener.volume = 0.5f;
+    }
 }
