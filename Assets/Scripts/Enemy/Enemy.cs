@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    protected Color COLOR;
     protected float WEIGHT;
     protected float SIZE;
     protected float SPEED;
-
     protected GameObject player;
 
     protected virtual void SetStatus()
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
         }
         Vector3 direction = player.transform.position - this.transform.position;
         this.transform.position += direction.normalized * SPEED * Time.deltaTime;
+        this.GetComponent<MeshRenderer>().material.color = COLOR;
     }
 
     protected void Awake()
