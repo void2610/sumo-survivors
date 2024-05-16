@@ -7,15 +7,6 @@ public class SpawnEnemy : MonoBehaviour
     private int spawnNum = 1;
     [SerializeField]
     EnemySpawner spawner;
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     void FixedUpdate()
     {

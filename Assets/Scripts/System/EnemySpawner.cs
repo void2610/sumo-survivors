@@ -19,10 +19,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GameObject field = GameObject.Find("Floor");
-        // 床のサイズを計算
         Vector3 floorSize = field.GetComponent<Renderer>().bounds.size;
 
-        // 床の端の二点の座標を計算
         spawnRange[0] = field.GetComponent<Transform>().position - floorSize / 2f;
         spawnRange[1] = field.GetComponent<Transform>().position + floorSize / 2f;
     }

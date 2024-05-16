@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
         this.transform.localScale = new Vector3(SIZE, SIZE, SIZE);
         this.GetComponent<Rigidbody>().mass = WEIGHT;
-        Debug.Log("Enemy: " + WEIGHT + ", " + SIZE + ", " + SPEED);
     }
 
     protected void FixedUpdate()
