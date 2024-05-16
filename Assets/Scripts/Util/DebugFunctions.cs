@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DebugFunctions : MonoBehaviour
 {
-
     void Start()
     {
         if (!Application.isEditor)
