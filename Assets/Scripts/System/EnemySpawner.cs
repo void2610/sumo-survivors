@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject slimePrefab;
+    private List<GameObject> enemyPrefabs = new List<GameObject>();
     private Vector3[] spawnRange = new Vector3[2];
 
-    public void SpawnEnemy()
+    public void SpawnEnemy(int enemyIndex)
     {
+        if (enemyIndex < 0 || enemyIndex >= enemyPrefabs.Count) return;
+
         Vector3 spawnPosition = new Vector3(Random.Range(spawnRange[0].x, spawnRange[1].x), 1, Random.Range(spawnRange[0].z, spawnRange[1].z));
-        GameObject enemy = Instantiate(slimePrefab, spawnPosition, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPosition, Quaternion.identity);
     }
 
     void Start()

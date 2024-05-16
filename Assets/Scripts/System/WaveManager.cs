@@ -23,11 +23,11 @@ public class WaveManager : MonoBehaviour
         {
             for (int i = 0; i < Mathf.Floor(spawnNum); i++)
             {
-                spawner.SpawnEnemy();
+                spawner.SpawnEnemy(2);
             }
             if (0.5f > spawnNum - Mathf.Floor(spawnNum))
             {
-                spawner.SpawnEnemy();
+                spawner.SpawnEnemy(2);
             }
         }
     }

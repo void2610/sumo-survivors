@@ -23,11 +23,11 @@ public class SpawnEnemy : MonoBehaviour
         {
             for (int i = 0; i < spawnNum; i++)
             {
-                spawner.SpawnEnemy();
+                spawner.SpawnEnemy(0);
             }
             if (0.5f > spawnNum - Mathf.Floor(spawnNum))
             {
-                spawner.SpawnEnemy();
+                spawner.SpawnEnemy(0);
             }
         }
     }

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : Enemy
+public class Heavy : Enemy
 {
     protected override void SetStatus()
     {
-        WEIGHT = 1.0f;
-        SIZE = 1.0f;
+        WEIGHT = 100.0f;
+        SIZE = 1.1f;
         SPEED = 1.0f;
     }
 

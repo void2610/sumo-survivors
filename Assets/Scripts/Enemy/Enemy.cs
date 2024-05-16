@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     protected float WEIGHT;
-    protected float ATTACK_POWER;
+    protected float SIZE;
     protected float SPEED;
 
     protected GameObject player;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public int GetKillScore()
     {
-        return Mathf.FloorToInt(WEIGHT * ATTACK_POWER * SPEED);
+        return Mathf.FloorToInt(WEIGHT * SIZE * SPEED);
     }
 
     protected void MoveToPlayer()
@@ -37,6 +37,9 @@ public class Enemy : MonoBehaviour
     protected void Start()
     {
         player = GameObject.Find("Player");
+        this.transform.localScale = new Vector3(SIZE, SIZE, SIZE);
+        this.GetComponent<Rigidbody>().mass = WEIGHT;
+        Debug.Log("Enemy: " + WEIGHT + ", " + SIZE + ", " + SPEED);
     }
 
     protected void FixedUpdate()
