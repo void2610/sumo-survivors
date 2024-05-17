@@ -17,7 +17,7 @@ public class AntigravityFieldObj : MonoBehaviour
 
         if (rb != null)
         {
-            rb.AddForce(Vector3.up * StatusManager.instance.ANTIGRAVITY_POWER, ForceMode.Acceleration);
+            rb.AddForce(Vector3.up * StatusManager.instance.ANTIGRAVITY_POWER / rb.mass, ForceMode.Acceleration);
         }
     }
 }
