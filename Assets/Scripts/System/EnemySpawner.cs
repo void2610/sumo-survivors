@@ -8,12 +8,15 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private Vector3[] spawnRange = new Vector3[2];
 
-    public void SpawnEnemy(int enemyIndex)
+    public void SpawnEnemy(int enemyIndex, int n = 1)
     {
         if (enemyIndex < 0 || enemyIndex >= enemyPrefabs.Count) return;
 
-        Vector3 spawnPosition = new Vector3(Random.Range(spawnRange[0].x, spawnRange[1].x), 1, Random.Range(spawnRange[0].z, spawnRange[1].z));
-        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPosition, Quaternion.identity);
+        for (int i = 0; i < n; i++)
+        {
+            Vector3 spawnPosition = new Vector3(Random.Range(spawnRange[0].x, spawnRange[1].x), 1, Random.Range(spawnRange[0].z, spawnRange[1].z));
+            GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPosition, Quaternion.identity);
+        }
     }
 
     void Start()
