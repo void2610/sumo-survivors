@@ -15,7 +15,7 @@ public class WeightUp : StatusChange
     public override void ChangeStatus()
     {
         base.ChangeStatus();
-        StatusManager.instance.PLAYER_WEIGHT *= 1.5f;
+        StatusManager.instance.PLAYER_WEIGHT *= 2f;
         GameObject.Find("Player").GetComponent<Rigidbody>().mass = StatusManager.instance.PLAYER_WEIGHT;
     }
 }
