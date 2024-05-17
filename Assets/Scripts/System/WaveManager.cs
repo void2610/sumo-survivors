@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    WaveManager instance = null;
+    public static WaveManager instance = null;
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +22,13 @@ public class WaveManager : MonoBehaviour
     private int[] enemyNum = { 0, 0, 0 };
     EnemySpawner spawner;
     private float timer = 0.0f;
+
+    public int GetWave()
+    {
+        return wave;
+    }
+
+
     void Start()
     {
         waveData.Add(new int[] { 1, 0, 0 });
