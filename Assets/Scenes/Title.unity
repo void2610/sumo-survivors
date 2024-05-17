@@ -1643,7 +1643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31348770944ea429fa40afe44059d8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimePrefab: {fileID: 5388840509591399967, guid: 04b3795654ec749d596511ae7b72b189, type: 3}
+  enemyPrefabs:
+  - {fileID: 5388840509591399967, guid: 04b3795654ec749d596511ae7b72b189, type: 3}
 --- !u!114 &1717557723
 MonoBehaviour:
   m_ObjectHideFlags: 0
