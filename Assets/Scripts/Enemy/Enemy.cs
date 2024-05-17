@@ -39,7 +39,9 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
         this.transform.localScale = new Vector3(SIZE, SIZE, SIZE);
         this.GetComponent<Rigidbody>().mass = WEIGHT;
-        this.GetComponent<MeshRenderer>().material.color = COLOR;
+        Material materialInstance = new Material(this.GetComponent<MeshRenderer>().material);
+        materialInstance.color = COLOR;
+        this.GetComponent<MeshRenderer>().material = materialInstance;
     }
 
     protected void FixedUpdate()
