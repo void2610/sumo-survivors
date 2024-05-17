@@ -5,17 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Abyss : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField]
+    GameObject deathParticlePrefab;
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,7 +18,10 @@ public class Abyss : MonoBehaviour
                 ExpManager.instance.AddExp(other.gameObject.GetComponent<Enemy>().GetKillScore());
             }
 
-            ParticleSystem deathParticle = Instantiate(Resources.Load<GameObject>("Prefabs/Particle/DeathParticle").GetComponent<ParticleSystem>(), other.gameObject.transform.position, Quaternion.identity);
+            ParticleSystem deathParticle = Instantiate(deathParticlePrefab.GetComponent<ParticleSystem>(), other.gameObject.transform.position, Quaternion.identity);
+            var renderer = deathParticle.GetComponent<ParticleSystemRenderer>();
+            renderer.material.color = other.gameObject.GetComponent<MeshRenderer>().material.color;
+            renderer.material.SetColor("_EmissionColor", other.gameObject.GetComponent<MeshRenderer>().material.color);
             deathParticle.Play();
 
             other.gameObject.GetComponent<RandomAudioContainer>().Play();

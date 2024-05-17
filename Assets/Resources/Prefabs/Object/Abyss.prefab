@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6bd087596254071ba88e91a2463105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticlePrefab: {fileID: 692782514905190461, guid: 35dd33e2d45d14fa988436eb0d3a4ac1, type: 3}
