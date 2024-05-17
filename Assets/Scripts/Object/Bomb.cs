@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private AudioClip explosionSound;
-    private float power = 500f;
+    private float power = 450f;
     private float radius = 6.0f;
     private float time = 1.5f;
 
