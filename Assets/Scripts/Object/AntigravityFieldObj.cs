@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AntigravityFieldObj : MonoBehaviour
 {
-    float time = 5.0f;
+    float time = 3.0f;
 
     void Start()
     {

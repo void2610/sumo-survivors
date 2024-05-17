@@ -22,6 +22,7 @@ public class WaveManager : MonoBehaviour
     private int[] enemyNum = { 0, 0, 0 };
     EnemySpawner spawner;
     private float timer = 0.0f;
+    private int frameCount = 0;
 
     public int GetWave()
     {
@@ -79,12 +80,12 @@ public class WaveManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Time.frameCount % 60 == 0)
+        frameCount++;
+        if (frameCount % 60 == 0)
         {
             spawner.SpawnEnemy(0, enemyNum[0]);
             spawner.SpawnEnemy(1, enemyNum[1]);
             spawner.SpawnEnemy(2, enemyNum[2]);
-
         }
     }
 }

@@ -6,8 +6,8 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private AudioClip explosionSound;
-    private float power = 180f;
-    private float radius = 5.0f;
+    private float power = 500f;
+    private float radius = 6.0f;
     private float time = 1.5f;
 
     private void Explode()
@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
 
             if (rb != null)
             {
-                rb.AddExplosionForce(power, transform.position, radius, 3.0f);
+                rb.AddExplosionForce(power, transform.position, radius, 5.0f);
             }
         }
 
