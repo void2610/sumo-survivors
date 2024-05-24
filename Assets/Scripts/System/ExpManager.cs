@@ -19,10 +19,15 @@ public class ExpManager : MonoBehaviour
 
     private int exp = 0;
     private int level = 1;
-    private int[] levelUpExpList = { 1, 5, 10, 20, 30, 50, 70, 100, 150, 200, 300, 500, 1000, 1500, 1600, 1700, 1800, 1900, 2000, 2500 };
+    private int[] levelUpExpList = { 1, 5, 10, 20, 30, 50, 70, 100, 150, 250, 500, 1000, 1500, 2000, 2500 };
     public void AddExp(int addExp)
     {
         exp += addExp;
+        if (level >= levelUpExpList.Length)
+        {
+            return;
+        }
+
         if (exp >= levelUpExpList[level - 1])
         {
             LevelUp();
@@ -53,9 +58,9 @@ public class ExpManager : MonoBehaviour
 
     public string GetUIString()
     {
-        if (level == levelUpExpList.Length)
+        if (level >= levelUpExpList.Length)
         {
-            return "EXP: / MAX";
+            return "EXP: MAX";
         }
         return "EXP: " + exp + "/" + levelUpExpList[level - 1];
     }

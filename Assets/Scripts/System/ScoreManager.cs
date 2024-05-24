@@ -29,8 +29,9 @@ public class ScoreManager : MonoBehaviour
         score = 0;
     }
 
-    public void SendScore(){
-        UnityroomApiClient.Instance.SendScore(1, score, ScoreboardWriteMode.Always);
+    public void SendScore()
+    {
+        UnityroomApiClient.Instance.SendScore(2, score, ScoreboardWriteMode.Always);
     }
 
     public int GetScore()
