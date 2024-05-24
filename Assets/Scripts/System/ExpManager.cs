@@ -19,7 +19,7 @@ public class ExpManager : MonoBehaviour
 
     private int exp = 0;
     private int level = 1;
-    private int[] levelUpExpList = { 1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300 };
+    private int[] levelUpExpList = { 1, 5, 10, 20, 30, 50, 70, 100, 150, 200, 300, 500, 1000, 1500, 1600, 1700, 1800, 1900, 2000, 2500 };
     public void AddExp(int addExp)
     {
         exp += addExp;
