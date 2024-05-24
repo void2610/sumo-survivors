@@ -19,11 +19,11 @@ public class ExpManager : MonoBehaviour
 
     private int exp = 0;
     private int level = 1;
-    private int levelUpExp = 1;
+    private int[] levelUpExpList = { 1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300 };
     public void AddExp(int addExp)
     {
         exp += addExp;
-        if (exp >= levelUpExp)
+        if (exp >= levelUpExpList[level - 1])
         {
             LevelUp();
         }
@@ -53,18 +53,10 @@ public class ExpManager : MonoBehaviour
 
     public string GetUIString()
     {
-        return "EXP: " + exp + "/" + levelUpExp;
-    }
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        levelUpExp = (int)Mathf.Pow(level, 2);
+        if (level == levelUpExpList.Length)
+        {
+            return "EXP: / MAX";
+        }
+        return "EXP: " + exp + "/" + levelUpExpList[level - 1];
     }
 }
