@@ -15,7 +15,7 @@ public class AntigravityFieldObj : MonoBehaviour
     {
         Rigidbody rb = other.GetComponent<Rigidbody>();
 
-        if (rb != null)
+        if (rb != null && other.name != "Player")
         {
             rb.AddForce(Vector3.up * StatusManager.instance.ANTIGRAVITY_POWER / rb.mass, ForceMode.Acceleration);
         }

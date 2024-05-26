@@ -36,32 +36,34 @@ public class WaveManager : MonoBehaviour
         waveData.Add(new int[] { 1, 0, 0 });
         waveData.Add(new int[] { 1, 0, 0 });
         waveData.Add(new int[] { 0, 1, 0 });
+        waveData.Add(new int[] { 0, 0, 1 });
         waveData.Add(new int[] { 0, 1, 0 });
         waveData.Add(new int[] { 0, 0, 1 });
+        waveData.Add(new int[] { 1, 0, 0 });
+        waveData.Add(new int[] { 1, 0, 0 });
+        waveData.Add(new int[] { 0, 1, 0 });
         waveData.Add(new int[] { 0, 0, 1 });
-        waveData.Add(new int[] { 1, 1, 0 });
-        waveData.Add(new int[] { 1, 1, 0 });
-        waveData.Add(new int[] { 1, 0, 1 });
-        waveData.Add(new int[] { 1, 0, 1 });
+        waveData.Add(new int[] { 0, 1, 0 });
+        waveData.Add(new int[] { 0, 0, 1 });
         waveData.Add(new int[] { 1, 1, 1 });
         waveData.Add(new int[] { 1, 1, 1 });
         waveData.Add(new int[] { 1, 1, 1 });
         waveData.Add(new int[] { 2, 2, 2 });
         waveData.Add(new int[] { 2, 2, 2 });
         waveData.Add(new int[] { 2, 2, 2 });
-        waveData.Add(new int[] { 2, 2, 2 });
-        waveData.Add(new int[] { 3, 3, 3 });
         waveData.Add(new int[] { 3, 3, 3 });
         waveData.Add(new int[] { 3, 3, 3 });
         waveData.Add(new int[] { 3, 3, 3 });
         waveData.Add(new int[] { 4, 4, 4 });
         waveData.Add(new int[] { 4, 4, 4 });
-        waveData.Add(new int[] { 5, 5, 5 });
+        waveData.Add(new int[] { 4, 4, 4 });
 
         spawner = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
         timer = 0.0f;
         wave = 0;
         enemyNum[0] += waveData[wave][0];
+        enemyNum[1] += waveData[wave][1];
+        enemyNum[2] += waveData[wave][2];
     }
 
     void Update()

@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         return Mathf.FloorToInt(WEIGHT * SIZE * SPEED);
     }
 
-    protected void MoveToPlayer()
+    protected virtual void MoveToPlayer()
     {
         if (player == null)
         {

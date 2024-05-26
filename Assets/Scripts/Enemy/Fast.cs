@@ -17,6 +17,16 @@ public class Fast : Enemy
         base.Awake();
     }
 
+    protected override void MoveToPlayer()
+    {
+        if (player == null)
+        {
+            return;
+        }
+        Vector3 direction = player.transform.position - this.transform.position + new Vector3(0.0f, 0.2f, 0.0f);
+        this.transform.position += direction.normalized * SPEED * Time.deltaTime;
+    }
+
     new void Start()
     {
         base.Start();
