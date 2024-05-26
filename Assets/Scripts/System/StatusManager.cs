@@ -11,6 +11,7 @@ public class StatusManager : MonoBehaviour
     public float DASH_COOLTIME;
     public float EXP_MULTIPLIER;
     public float ENEMY_SPAWN_RATE;
+    public float ENEMY_WEIGHT;
     public float STAGE_SIZE;
 
     public float ANTIGRAVITY_POWER;
@@ -24,6 +25,7 @@ public class StatusManager : MonoBehaviour
         DASH_COOLTIME = 2.0f;
         EXP_MULTIPLIER = 1.0f;
         ENEMY_SPAWN_RATE = 1.0f;
+        ENEMY_WEIGHT = 1.0f;
         STAGE_SIZE = 1.0f;
         ANTIGRAVITY_POWER = 15.0f;
     }

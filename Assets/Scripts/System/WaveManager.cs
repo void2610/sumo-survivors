@@ -38,37 +38,41 @@ public class WaveManager : MonoBehaviour
         enemyNum[0] += waveData[wave][0];
         enemyNum[1] += waveData[wave][1];
         enemyNum[2] += waveData[wave][2];
+        StatusManager.instance.ENEMY_WEIGHT += waveData[wave][3];
         Debug.Log("Wave " + wave);
-        waveUI.ShowWaveMassage("敵数増加！");
+        if (waveData[wave][3] == 0)
+        {
+            waveUI.ShowWaveMassage("敵数増加！");
+        }
+        else
+        {
+            waveUI.ShowWaveMassage("敵重量増加！");
+        }
+
     }
 
     void Start()
     {
-        waveData.Add(new int[] { 1, 0, 0 });
-        waveData.Add(new int[] { 1, 0, 0 });
-        waveData.Add(new int[] { 1, 0, 0 });
-        waveData.Add(new int[] { 0, 1, 0 });
-        waveData.Add(new int[] { 0, 0, 1 });
-        waveData.Add(new int[] { 0, 1, 0 });
-        waveData.Add(new int[] { 0, 0, 1 });
-        waveData.Add(new int[] { 1, 0, 0 });
-        waveData.Add(new int[] { 1, 0, 0 });
-        waveData.Add(new int[] { 0, 1, 0 });
-        waveData.Add(new int[] { 0, 0, 1 });
-        waveData.Add(new int[] { 0, 1, 0 });
-        waveData.Add(new int[] { 0, 0, 1 });
-        waveData.Add(new int[] { 1, 1, 1 });
-        waveData.Add(new int[] { 1, 1, 1 });
-        waveData.Add(new int[] { 1, 1, 1 });
-        waveData.Add(new int[] { 2, 2, 2 });
-        waveData.Add(new int[] { 2, 2, 2 });
-        waveData.Add(new int[] { 2, 2, 2 });
-        waveData.Add(new int[] { 3, 3, 3 });
-        waveData.Add(new int[] { 3, 3, 3 });
-        waveData.Add(new int[] { 3, 3, 3 });
-        waveData.Add(new int[] { 4, 4, 4 });
-        waveData.Add(new int[] { 4, 4, 4 });
-        waveData.Add(new int[] { 4, 4, 4 });
+        waveData.Add(new int[] { 1, 0, 0, 0 });
+        waveData.Add(new int[] { 1, 0, 0, 0 });
+        waveData.Add(new int[] { 1, 0, 0, 0 });
+        waveData.Add(new int[] { 0, 1, 0, 0 });
+        waveData.Add(new int[] { 0, 0, 1, 0 });
+        waveData.Add(new int[] { 0, 1, 0, 0 });
+        waveData.Add(new int[] { 0, 0, 1, 0 });
+        waveData.Add(new int[] { 0, 0, 0, 1 });
+        waveData.Add(new int[] { 1, 0, 0, 0 });
+        waveData.Add(new int[] { 0, 1, 0, 0 });
+        waveData.Add(new int[] { 0, 0, 1, 0 });
+        waveData.Add(new int[] { 0, 1, 0, 0 });
+        waveData.Add(new int[] { 0, 0, 1, 0 });
+        waveData.Add(new int[] { 0, 0, 0, 1 });
+        waveData.Add(new int[] { 1, 0, 0, 0 });
+        waveData.Add(new int[] { 1, 1, 0, 0 });
+        waveData.Add(new int[] { 1, 0, 1, 0 });
+        waveData.Add(new int[] { 1, 1, 1, 0 });
+        waveData.Add(new int[] { 2, 2, 2, 0 });
+        waveData.Add(new int[] { 3, 3, 3, 1 });
 
         spawner = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
         timer = 0.0f;

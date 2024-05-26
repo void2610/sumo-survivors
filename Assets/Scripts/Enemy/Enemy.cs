@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.Find("Player");
         this.transform.localScale = new Vector3(SIZE, SIZE, SIZE);
-        this.GetComponent<Rigidbody>().mass = WEIGHT;
+        this.GetComponent<Rigidbody>().mass = WEIGHT * StatusManager.instance.ENEMY_WEIGHT;
         Material materialInstance = new Material(this.GetComponent<MeshRenderer>().material);
         materialInstance.color = COLOR;
         this.GetComponent<MeshRenderer>().material = materialInstance;
