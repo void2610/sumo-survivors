@@ -17,6 +17,9 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Wave waveUI;
+
     private int wave = 0;
     private List<int[]> waveData = new List<int[]>();
     private int[] enemyNum = { 0, 0, 0 };
@@ -29,6 +32,15 @@ public class WaveManager : MonoBehaviour
         return wave;
     }
 
+    private void ProceedWave()
+    {
+        wave++;
+        enemyNum[0] += waveData[wave][0];
+        enemyNum[1] += waveData[wave][1];
+        enemyNum[2] += waveData[wave][2];
+        Debug.Log("Wave " + wave);
+        waveUI.ShowWaveMassage("敵数増加！");
+    }
 
     void Start()
     {
@@ -71,12 +83,8 @@ public class WaveManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 30.0f && wave < waveData.Count - 1)
         {
-            wave++;
-            enemyNum[0] += waveData[wave][0];
-            enemyNum[1] += waveData[wave][1];
-            enemyNum[2] += waveData[wave][2];
+            ProceedWave();
             timer = 0.0f;
-            Debug.Log("Wave " + wave);
         }
     }
 
