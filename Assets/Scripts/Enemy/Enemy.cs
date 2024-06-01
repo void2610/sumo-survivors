@@ -36,6 +36,10 @@ public class Enemy : MonoBehaviour
 
     protected void Start()
     {
+        if (StatusManager.instance == null)
+        {
+            return;
+        }
         player = GameObject.Find("Player");
         this.transform.localScale = new Vector3(SIZE, SIZE, SIZE);
         this.GetComponent<Rigidbody>().mass = WEIGHT * StatusManager.instance.ENEMY_WEIGHT;
