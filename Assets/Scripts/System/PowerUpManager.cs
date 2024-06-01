@@ -62,8 +62,9 @@ public class PowerUpManager : MonoBehaviour
         statusChangeList.Add(typeof(DashCycle));
         statusChangeList.Add(typeof(StageSizeUp));
 
-        statusChangeList.Add(typeof(BombThrower));
+        statusChangeList.Add(typeof(Bomb));
         statusChangeList.Add(typeof(AntiGeavityField));
+        statusChangeList.Add(typeof(Wind));
         RollPowerUp();
     }
 

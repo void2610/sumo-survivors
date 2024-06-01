@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombThrower : Summon
+public class Bomb : Summon
 {
     private GameObject bomb;
     protected override void SetStatus()

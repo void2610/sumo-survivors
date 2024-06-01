@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class BombObj : MonoBehaviour
 {
     [SerializeField]
     private AudioClip explosionSound;
