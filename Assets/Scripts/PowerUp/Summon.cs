@@ -12,7 +12,7 @@ public class Summon : PowerUp
 
     }
 
-    public void StartSummon()
+    public virtual void StartSummon()
     {
         InvokeRepeating("SummonObject", 0, interval);
     }

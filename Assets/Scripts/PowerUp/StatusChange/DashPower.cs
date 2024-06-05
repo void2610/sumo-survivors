@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DashPower : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Dash Power";
         description = "プレイヤーのダッシュの勢いを上げる";
         iconPath = "DashPower";

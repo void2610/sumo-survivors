@@ -8,13 +8,11 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     [SerializeField]
-    private List<Type> statusChangeList = new List<Type>();
-    [SerializeField]
-    private List<Type> summonList = new List<Type>();
+    private List<Type> powerUpList = new List<Type>();
     [SerializeField]
     private List<GameObject> powerUpPanelList;
-
     public static PowerUpManager instance;
+    public Dictionary<Type, int> powerUpLevelDict = new Dictionary<Type, int>();
 
     public void RollPowerUp()
     {
@@ -27,17 +25,8 @@ public class PowerUpManager : MonoBehaviour
     private void AttachRandomPowerUp(GameObject target, PowerUpType type)
     {
         Type selectedScript = null;
-        switch (type)
-        {
-            case PowerUpType.StatusChange:
-                selectedScript = statusChangeList[UnityEngine.Random.Range(0, statusChangeList.Count)];
-                break;
-            case PowerUpType.Summon:
-                selectedScript = summonList[UnityEngine.Random.Range(0, summonList.Count)];
-                break;
-            default:
-                break;
-        }
+        selectedScript = powerUpList[UnityEngine.Random.Range(0, powerUpList.Count)];
+
         PowerUpPanel panel = target.GetComponent<PowerUpPanel>();
         panel.SetPowerUp(selectedScript);
     }
@@ -55,16 +44,21 @@ public class PowerUpManager : MonoBehaviour
     }
     void Start()
     {
-        statusChangeList.Add(typeof(WeightUp));
-        statusChangeList.Add(typeof(SpeedUp));
-        statusChangeList.Add(typeof(SizeUp));
-        statusChangeList.Add(typeof(DashPower));
-        statusChangeList.Add(typeof(DashCycle));
-        statusChangeList.Add(typeof(StageSizeUp));
+        powerUpList.Add(typeof(WeightUp));
+        powerUpList.Add(typeof(SpeedUp));
+        powerUpList.Add(typeof(SizeUp));
+        powerUpList.Add(typeof(DashPower));
+        powerUpList.Add(typeof(DashCycle));
+        powerUpList.Add(typeof(StageSizeUp));
 
-        statusChangeList.Add(typeof(Bomb));
-        statusChangeList.Add(typeof(AntiGeavityField));
-        statusChangeList.Add(typeof(Wind));
+        powerUpList.Add(typeof(Bomb));
+        powerUpList.Add(typeof(AntiGeavityField));
+        powerUpList.Add(typeof(Wind));
+
+        foreach (Type type in powerUpList)
+        {
+            powerUpLevelDict.Add(type, 0);
+        }
         RollPowerUp();
     }
 

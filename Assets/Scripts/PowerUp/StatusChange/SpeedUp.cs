@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpeedUp : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Speed Up";
         description = "プレイヤーの移動速度を上げる";
         iconPath = "SpeedUp";

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WeightUp : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Weight Up";
         description = "プレイヤーの重さを上げる";
         iconPath = "WeightUp";

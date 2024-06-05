@@ -5,12 +5,18 @@ using UnityEngine;
 public class Bomb : Summon
 {
     private GameObject bomb;
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Bomb Thrower";
         description = "定期的に爆弾を出現させる";
         iconPath = "BombThrower";
         interval = 5;
+    }
+
+    public override void StartSummon()
+    {
+        base.StartSummon();
         bomb = Resources.Load<GameObject>("Prefabs/Object/Bomb");
     }
 

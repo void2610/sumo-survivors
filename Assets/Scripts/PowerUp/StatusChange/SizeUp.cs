@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SizeUp : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Size Up";
         description = "プレイヤーを大きくする";
         iconPath = "SizeUp";

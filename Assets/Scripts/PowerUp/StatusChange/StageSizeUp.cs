@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class StageSizeUp : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Stage Size Up";
         description = "ステージを拡大する";
         iconPath = "StageSizeUp";

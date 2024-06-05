@@ -8,14 +8,10 @@ public class PowerUp : MonoBehaviour
     public new string name { get; protected set; }
     public string description { get; protected set; }
     public string iconPath { get; protected set; }
+    public int level = 0;
 
-    protected virtual void SetStatus()
+    public virtual void SetStatus()
     {
+        level = PowerUpManager.instance.powerUpLevelDict[this.GetType()];
     }
-
-    void Awake()
-    {
-        SetStatus();
-    }
-
 }

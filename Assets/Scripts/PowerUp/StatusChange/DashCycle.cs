@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DashCycle : StatusChange
 {
-    protected override void SetStatus()
+    public override void SetStatus()
     {
+        base.SetStatus();
         name = "Dash Cycle";
         description = "プレイヤーのダッシュのクールタイムを短くする";
         iconPath = "DashCycle";

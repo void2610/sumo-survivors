@@ -11,6 +11,7 @@ public class PowerUpPanel : MonoBehaviour
 
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descriptionText;
+    private TextMeshProUGUI levelText;
     private Image iconImage;
     private GameObject player;
 
@@ -18,6 +19,8 @@ public class PowerUpPanel : MonoBehaviour
     {
         if (powerUp)
         {
+            int level = ++PowerUpManager.instance.powerUpLevelDict[powerUp.GetType()];
+            powerUp.level = level;
             if (powerUp is StatusChange)
             {
                 StatusChange statusChange = powerUp as StatusChange;
@@ -40,9 +43,11 @@ public class PowerUpPanel : MonoBehaviour
         {
             return;
         }
+        powerUp.SetStatus();
 
         this.powerUp = powerUp;
         nameText.text = this.powerUp.name;
+        levelText.text = "Level: " + this.powerUp.level;
         descriptionText.text = powerUp.description;
         Sprite icon = Resources.Load<Sprite>("Images/Icons/" + powerUp.iconPath);
         iconImage.sprite = icon;
@@ -52,8 +57,9 @@ public class PowerUpPanel : MonoBehaviour
     {
         //子オブジェクトのTextMeshProUGUIコンポーネントを取得
         nameText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        descriptionText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        iconImage = transform.GetChild(3).GetComponent<Image>();
+        levelText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        descriptionText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        iconImage = transform.GetChild(4).GetComponent<Image>();
         player = GameObject.Find("Player");
     }
 
