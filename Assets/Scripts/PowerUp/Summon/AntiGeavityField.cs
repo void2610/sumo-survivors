@@ -12,11 +12,6 @@ public class AntiGeavityField : Summon
         description = "反重力フィールドを出現させる";
         iconPath = "AntiGeavityField";
         interval = 15.0f;
-    }
-
-    public override void StartSummon()
-    {
-        base.StartSummon();
         agf = Resources.Load<GameObject>("Prefabs/Object/AntigravityField");
     }
 

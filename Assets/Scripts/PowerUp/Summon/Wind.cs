@@ -12,14 +12,8 @@ public class Wind : Summon
         description = "定期的に風を発生させる";
         iconPath = "Wind";
         interval = 15;
-    }
-
-    public override void StartSummon()
-    {
-        base.StartSummon();
         wind = Resources.Load<GameObject>("Prefabs/Object/Wind");
     }
-
 
     public override void SummonObject()
     {
