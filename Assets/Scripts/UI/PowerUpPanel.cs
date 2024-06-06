@@ -17,35 +17,21 @@ public class PowerUpPanel : MonoBehaviour
 
     public void OnClick()
     {
-        if (powerUp)
+        if (this.powerUp != null)
         {
-            int level = ++PowerUpManager.instance.powerUpLevelDict[powerUp.GetType()];
-            powerUp.level = level;
-            if (powerUp is StatusChange)
-            {
-                StatusChange statusChange = powerUp as StatusChange;
-                statusChange.ChangeStatus();
-            }
-            else if (powerUp is Summon)
-            {
-                Summon pu = player.AddComponent(powerUp.GetType()) as Summon;
-                pu.StartSummon();
-            }
-
+            PowerUpManager.instance.LevelUpPowerUp(this.powerUp.GetType());
             GameManager.instance.ChangeGameState(GameState.InGame);
         }
     }
 
-    public void SetPowerUp(Type powerUpType)
+    public void SetPowerUp(PowerUp pu)
     {
-        PowerUp powerUp = this.gameObject.AddComponent(powerUpType) as PowerUp;
-        if (!powerUp || iconImage == null)
+        if (pu == null)
         {
             return;
         }
-        powerUp.SetStatus();
+        this.powerUp = pu;
 
-        this.powerUp = powerUp;
         nameText.text = this.powerUp.name;
         levelText.text = "Level: " + this.powerUp.level;
         descriptionText.text = powerUp.description;
@@ -55,17 +41,10 @@ public class PowerUpPanel : MonoBehaviour
 
     void Start()
     {
-        //子オブジェクトのTextMeshProUGUIコンポーネントを取得
         nameText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         levelText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         descriptionText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         iconImage = transform.GetChild(4).GetComponent<Image>();
         player = GameObject.Find("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

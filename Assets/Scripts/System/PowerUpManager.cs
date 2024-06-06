@@ -9,26 +9,32 @@ public class PowerUpManager : MonoBehaviour
 {
     [SerializeField]
     private List<Type> powerUpList = new List<Type>();
+    private List<PowerUp> powerUpInstanceList = new List<PowerUp>();
     [SerializeField]
-    private List<GameObject> powerUpPanelList;
+    private List<PowerUpPanel> powerUpPanelList;
     public static PowerUpManager instance;
-    public Dictionary<Type, int> powerUpLevelDict = new Dictionary<Type, int>();
 
     public void RollPowerUp()
     {
-        foreach (GameObject panel in powerUpPanelList)
+        foreach (PowerUpPanel panel in powerUpPanelList)
         {
-            AttachRandomPowerUp(panel, PowerUpType.StatusChange);
+            AttachRandomPowerUp(panel);
         }
     }
 
-    private void AttachRandomPowerUp(GameObject target, PowerUpType type)
+    private void AttachRandomPowerUp(PowerUpPanel target)
     {
-        Type selectedScript = null;
-        selectedScript = powerUpList[UnityEngine.Random.Range(0, powerUpList.Count)];
+        PowerUp powerUp = powerUpInstanceList[UnityEngine.Random.Range(0, powerUpInstanceList.Count)];
+        target.SetPowerUp(powerUp);
+    }
 
-        PowerUpPanel panel = target.GetComponent<PowerUpPanel>();
-        panel.SetPowerUp(selectedScript);
+    public void LevelUpPowerUp(Type type)
+    {
+        PowerUp powerUp = powerUpInstanceList.FirstOrDefault(pu => pu.GetType() == type);
+        if (powerUp)
+        {
+            powerUp.LevelUp();
+        }
     }
 
     void Awake()
@@ -41,9 +47,7 @@ public class PowerUpManager : MonoBehaviour
         {
             Destroy(this);
         }
-    }
-    void Start()
-    {
+
         powerUpList.Add(typeof(WeightUp));
         powerUpList.Add(typeof(SpeedUp));
         powerUpList.Add(typeof(SizeUp));
@@ -54,15 +58,14 @@ public class PowerUpManager : MonoBehaviour
         powerUpList.Add(typeof(Bomb));
         powerUpList.Add(typeof(AntiGeavityField));
         powerUpList.Add(typeof(Wind));
-
+    }
+    void Start()
+    {
         foreach (Type type in powerUpList)
         {
-            powerUpLevelDict.Add(type, 0);
+            PowerUp pu = this.gameObject.AddComponent(type) as PowerUp;
+            pu.SetStatus();
+            powerUpInstanceList.Add(pu);
         }
-        RollPowerUp();
-    }
-
-    void Update()
-    {
     }
 }

@@ -12,6 +12,10 @@ public class PowerUp : MonoBehaviour
 
     public virtual void SetStatus()
     {
-        level = PowerUpManager.instance.powerUpLevelDict[this.GetType()];
+    }
+
+    public virtual void LevelUp()
+    {
+        level++;
     }
 }

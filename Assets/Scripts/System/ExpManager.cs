@@ -38,7 +38,6 @@ public class ExpManager : MonoBehaviour
     {
         exp = 0;
         level++;
-        Debug.Log("Level Up! Current Level: " + level);
 
         PowerUpManager.instance.RollPowerUp();
         GameManager.instance.ChangeGameState(GameState.LevelUp);

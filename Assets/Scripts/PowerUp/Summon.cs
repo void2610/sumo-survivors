@@ -16,4 +16,17 @@ public class Summon : PowerUp
     {
         InvokeRepeating("SummonObject", 0, interval);
     }
+
+    public virtual void StopSummon()
+    {
+        CancelInvoke("SummonObject");
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        StopSummon();
+        StartSummon();
+        Debug.Log(GetType().Name + " " + "Level: " + level);
+    }
 }

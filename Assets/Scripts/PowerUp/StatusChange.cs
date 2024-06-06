@@ -6,6 +6,12 @@ public class StatusChange : PowerUp
 {
     public virtual void ChangeStatus()
     {
-        Debug.Log(this.name);
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        ChangeStatus();
+        Debug.Log(GetType().Name + " " + "Level: " + level);
     }
 }
