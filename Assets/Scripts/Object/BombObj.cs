@@ -10,6 +10,13 @@ public class BombObj : MonoBehaviour
     private float radius = 6.0f;
     private float time = 1.5f;
 
+    public void Init(float power, float radius, float time)
+    {
+        this.power = power;
+        this.radius = radius;
+        this.time = time;
+    }
+
     private void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);

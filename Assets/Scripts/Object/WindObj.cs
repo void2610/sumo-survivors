@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class WindObj : MonoBehaviour
 {
+    private float time = 5.0f;
     private float coefficient = 0.1f;
-    private Vector3 velocity = new Vector3(-100, 0, 0);
+    private float power = 100;
+
+    public void Init(float time, float coefficient, float power)
+    {
+        this.time = time;
+        this.coefficient = coefficient;
+        this.power = power;
+    }
 
     void Start()
     {
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, time);
     }
 
     void OnTriggerStay(Collider col)
@@ -18,7 +26,7 @@ public class WindObj : MonoBehaviour
         {
             return;
         }
-        var relativeVelocity = velocity - col.GetComponent<Rigidbody>().velocity;
+        var relativeVelocity = new Vector3(-power, 0, 0) - col.GetComponent<Rigidbody>().velocity;
 
         col.GetComponent<Rigidbody>().AddForce(coefficient * relativeVelocity);
     }

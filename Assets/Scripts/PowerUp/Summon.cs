@@ -5,7 +5,6 @@ using UnityEngine;
 public class Summon : PowerUp
 {
     public float interval { get; protected set; }
-    public float targetObject { get; protected set; }
 
     public virtual void SummonObject()
     {

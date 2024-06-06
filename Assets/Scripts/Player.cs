@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
             dashParticle.Play();
             SoundManager.instance.PlaySe(dashSound, 0.8f);
         }
+        float y = Mathf.Min(1, this.transform.position.y);
+        this.transform.position = new Vector3(this.transform.position.x, y, this.transform.position.z);
     }
 
     void FixedUpdate()

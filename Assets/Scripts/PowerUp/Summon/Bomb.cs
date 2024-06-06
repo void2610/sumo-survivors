@@ -18,11 +18,20 @@ public class Bomb : Summon
         bomb = Resources.Load<GameObject>("Prefabs/Object/Bomb");
     }
 
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        power += 100;
+        radius += 1;
+        time -= 0.2f;
+        interval -= 1.0f;
+    }
+
     public override void SummonObject()
     {
         base.SummonObject();
         Vector3 p = GameObject.Find("Player").transform.position;
         GameObject b = Instantiate(bomb, p + Vector3.up * 2, Quaternion.identity);
-        b.GetComponent<BombObj>().Init(450, 6, 1.5f);
+        b.GetComponent<BombObj>().Init(power, radius, time);
     }
 }
