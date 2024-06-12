@@ -42,7 +42,7 @@ public class GarlicObj : MonoBehaviour
         Rigidbody rb = other.GetComponent<Rigidbody>();
         Vector3 direction = (other.transform.position - this.transform.position).normalized;
 
-        if (rb != null && other.name != "Player")
+        if (rb != null && other.tag != "Player")
         {
             rb.AddForce(direction * power / rb.mass, ForceMode.Acceleration);
         }
