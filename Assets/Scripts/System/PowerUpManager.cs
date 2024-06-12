@@ -48,16 +48,17 @@ public class PowerUpManager : MonoBehaviour
             Destroy(this);
         }
 
-        powerUpList.Add(typeof(WeightUp));
-        powerUpList.Add(typeof(SpeedUp));
-        powerUpList.Add(typeof(SizeUp));
-        powerUpList.Add(typeof(DashPower));
-        powerUpList.Add(typeof(DashCycle));
-        powerUpList.Add(typeof(StageSizeUp));
+        // powerUpList.Add(typeof(WeightUp));
+        // powerUpList.Add(typeof(SpeedUp));
+        // powerUpList.Add(typeof(SizeUp));
+        // powerUpList.Add(typeof(DashPower));
+        // powerUpList.Add(typeof(DashCycle));
+        // powerUpList.Add(typeof(StageSizeUp));
 
-        powerUpList.Add(typeof(Bomb));
-        powerUpList.Add(typeof(AntiGeavityField));
-        powerUpList.Add(typeof(Wind));
+        // powerUpList.Add(typeof(Bomb));
+        // powerUpList.Add(typeof(AntiGeavityField));
+        // powerUpList.Add(typeof(Wind));
+        powerUpList.Add(typeof(Garlic));
     }
     void Start()
     {
